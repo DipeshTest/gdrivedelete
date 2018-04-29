@@ -1,4 +1,4 @@
-package GDriveList
+package gdrivedelete
 
 import (
 	s "strings"
@@ -14,7 +14,7 @@ type MyActivity struct {
 	metadata *activity.Metadata
 }
 
-var log = logger.GetLogger("activity-twiliosms")
+var log = logger.GetLogger("activity-gdrivedelete")
 
 // NewActivity creates a new activity
 func NewActivity(metadata *activity.Metadata) activity.Activity {
@@ -30,37 +30,33 @@ func (a *MyActivity) Metadata() *activity.Metadata {
 func (a *MyActivity) Eval(context activity.Context) (done bool, err error) {
 
 	accessToken := s.TrimSpace(context.GetInput("accessToken").(string))
-	fileName := s.TrimSpace(context.GetInput("fileName").(string))
-	orderBy := s.TrimSpace(context.GetInput("orderBy").(string))
-	pageSize := context.GetInput("pageSize").(int)
-	nextPageToken := s.TrimSpace(context.GetInput("nextPageToken").(string))
+	fileId := s.TrimSpace(context.GetInput("fileId").(string))
 	timeout := s.TrimSpace(context.GetInput("timeout").(string))
 
 	if len(s.TrimSpace(accessToken)) == 0 {
-		//	fmt.Println(Twilio.ResponseData{501, "Failed", "Send input numbers back", "SMS body is blank"})
+		// fmt.Println(Twilio.ResponseData{501, "Failed", "Send input numbers back", "SMS body is blank"})
 		context.SetOutput("statusCode", "105")
 
 		context.SetOutput("message", "Access Token field is blank")
 		//context.SetOutput("failedNumbers", to)
 
 		//respond with this
-	} else {
-		if pageSize == 0 {
-			pageSize = 50
-		}
+	} else if len(s.TrimSpace(fileId)) == 0 {
+		// fmt.Println(Twilio.ResponseData{501, "Failed", "Send input numbers back", "SMS body is blank"})
+		context.SetOutput("statusCode", "106")
 
-		if len(s.TrimSpace(timeout)) == 0 {
+		context.SetOutput("message", "File ID field is blank")
+		//context.SetOutput("failedNumbers", to)
+
+		//respond with this
+	} else {
+		if len(timeout) == 0 {
 			timeout = "120"
 		}
-
-		code, msg, size, pageToken := GDrive.ListFile(accessToken, fileName, orderBy, int64(pageSize), nextPageToken, timeout)
+		code, msg := GDrive.DeleteFile(fileId, accessToken, timeout)
 		context.SetOutput("statusCode", code)
 
 		context.SetOutput("message", msg)
-
-		context.SetOutput("fileCount", size)
-
-		context.SetOutput("nextPageToken", pageToken)
 	}
 
 	return true, err
