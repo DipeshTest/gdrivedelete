@@ -50,7 +50,7 @@ Inputs and Outputs:
 | Setting     | Required | Description |
 |:------------|:---------|:------------|
 | accessToken | True     | The access token for your account |         
-| fileId   | False    | File Id of the file to delete |
+| fileId   | True    | File Id of the file to delete |
 | timeout       | False    | Timeout value for the delete call, default value is 120 seconds|
 
 ## Examples
