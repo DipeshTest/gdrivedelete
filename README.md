@@ -58,5 +58,19 @@ Inputs and Outputs:
 The below example for a sample delete:
 
 ```json
-
+{
+	"accessToken": "ya29.GlurBW7n5A2Fk_rstX9KMVeXLEOT4k0OhmSnF_w7626K9kgKmempF_xTDJ6uQVMkdWWWIMiNcb-ht6Rv9cnhsUb2VhtF9h7nltFw0iniwp10dmDQsFT49giOqFR8",
+	"fileId": "1M1mRDaQKzl6N_V6_6WqzlIoe4mTVKA38",
+	"timeout": "120"
+}
 ```
+
+
+## Response Codes
+### Google Drive Create
+| ResponseCode     | Type | Description |
+|:------------|:---------|:------------|
+|200 |OK| The request was successful. |
+|106 |INVALID INPUT| File ID is not specified.|
+|401 |AUTHENTICATION ERROR| Invalid Access Token.|
+|404 |SERVER ERROR| File Not Found.|
