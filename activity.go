@@ -3,7 +3,7 @@ package gdrivedelete
 import (
 	s "strings"
 
-	"github.com/DipeshTest/allstarsshared/GDrive"
+	"github.com/DipeshTest/allstarsshared/gdrive"
 
 	"github.com/TIBCOSoftware/flogo-lib/core/activity"
 	"github.com/TIBCOSoftware/flogo-lib/logger"
@@ -53,7 +53,7 @@ func (a *MyActivity) Eval(context activity.Context) (done bool, err error) {
 		if len(timeout) == 0 {
 			timeout = "120"
 		}
-		code, msg := GDrive.DeleteFile(fileId, accessToken, timeout)
+		code, msg := gdrive.DeleteFile(fileId, accessToken, timeout)
 		context.SetOutput("statusCode", code)
 
 		context.SetOutput("message", msg)
