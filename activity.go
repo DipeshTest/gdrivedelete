@@ -34,21 +34,11 @@ func (a *MyActivity) Eval(context activity.Context) (done bool, err error) {
 	timeout := s.TrimSpace(context.GetInput("timeout").(string))
 
 	if len(s.TrimSpace(accessToken)) == 0 {
-		// fmt.Println(Twilio.ResponseData{501, "Failed", "Send input numbers back", "SMS body is blank"})
 		context.SetOutput("statusCode", "105")
-
 		context.SetOutput("message", "Access Token field is blank")
-		//context.SetOutput("failedNumbers", to)
-
-		//respond with this
 	} else if len(s.TrimSpace(fileId)) == 0 {
-		// fmt.Println(Twilio.ResponseData{501, "Failed", "Send input numbers back", "SMS body is blank"})
 		context.SetOutput("statusCode", "106")
-
 		context.SetOutput("message", "File ID field is blank")
-		//context.SetOutput("failedNumbers", to)
-
-		//respond with this
 	} else {
 		if len(timeout) == 0 {
 			timeout = "120"
