@@ -62,10 +62,13 @@ Inputs and Outputs:
 Please refer activity_test.go
 
 ## Response Codes
-### Google Drive Create
+### Google Drive Delete
 | ResponseCode     | Type | Description |
 |:------------|:---------|:------------|
 |200 |OK| The request was successful. |
+|105 |INVALID INPUT| Access token is not specified.|
 |106 |INVALID INPUT| File ID is not specified.|
 |401 |AUTHENTICATION ERROR| Invalid Access Token.|
 |404 |SERVER ERROR| File Not Found.|
+
+Note - Please refer link - https://developers.google.com/doubleclick-search/v2/standard-error-responses for other standard error responses from Google 
