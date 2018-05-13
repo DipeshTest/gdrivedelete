@@ -4,10 +4,11 @@ import (
 	"io/ioutil"
 	"testing"
 
-	"github.com/TIBCOSoftware/flogo-lib/core/activity"
 	"fmt"
-	"github.com/stretchr/testify/assert"
+
 	"github.com/TIBCOSoftware/flogo-contrib/action/flow/test"
+	"github.com/TIBCOSoftware/flogo-lib/core/activity"
+	"github.com/stretchr/testify/assert"
 )
 
 var activityMetadata *activity.Metadata
@@ -36,6 +37,7 @@ func TestCreate(t *testing.T) {
 		return
 	}
 }
+
 /*
 func TestGDriveDeleteFile_Success(t *testing.T) {
 
@@ -103,7 +105,6 @@ func TestGDriveDeleteFile_InvalidToken(t *testing.T) {
 	assert.Equal(t, code, "105")
 } */
 
-
 func TestGDriveDeleteFile_InvalidFileId(t *testing.T) {
 
 	defer func() {
@@ -129,7 +130,6 @@ func TestGDriveDeleteFile_InvalidFileId(t *testing.T) {
 	msg := tc.GetOutput("message")
 	fmt.Print(msg)
 	assert.Equal(t, code, "404")
-
 
 	tc.SetInput("fileId", "")
 
