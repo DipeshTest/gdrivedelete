@@ -3,16 +3,21 @@ title: Delete GDrive File
 weight: 1
 ---
 
-# Counter
-This activity allows you to delete a file from Gdrive account.
+# Delete GDrive File
+This activity allows you to delete a file from Gdrive account. This activity is built by Team AllStars
 
 ## Installation
-### Flogo Web
-This activity comes out of the box with the Flogo Web UI
+
 ### Flogo CLI
 ```bash
-flogo add activity github.com/DipeshTest/gdrivedelete
+flogo install github.com/DipeshTest/gdrivedelete
 ```
+
+### Third-party libraries used
+- #### package drive - "google.golang.org/api/drive/v3":
+	Package drive provides access to the Drive API. For more details, check https://developers.google.com/drive/
+- #### package googleapi - "google.golang.org/api/googleapi":
+	Package googleapi contains the common code shared by all Google API libraries.
 
 ## Schema
 Inputs and Outputs:
@@ -54,17 +59,7 @@ Inputs and Outputs:
 | timeout       | False    | Timeout value for the delete call, default value is 120 seconds|
 
 ## Examples
-### Increment
-The below example for a sample delete:
-
-```json
-{
-	"accessToken": "ya29.GlurBW7n5A2Fk_rstX9KMVeXLEOT4k0OhmSnF_w7626K9kgKmempF_xTDJ6uQVMkdWWWIMiNcb-ht6Rv9cnhsUb2VhtF9h7nltFw0iniwp10dmDQsFT49giOqFR8",
-	"fileId": "1M1mRDaQKzl6N_V6_6WqzlIoe4mTVKA38",
-	"timeout": "120"
-}
-```
-
+Please refer activity_test.go
 
 ## Response Codes
 ### Google Drive Create
